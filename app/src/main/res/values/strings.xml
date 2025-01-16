@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">MisEventos</string>
+    <string name="todos_los_campos_obligatorios">Todos los campos son obligatorios</string>
+    <string name="usuario_registrado_exitosamente">Usuario registrado exitosamente</string>
+    <string name="usuario_ya_registrado">Usuario ya registrado</string>
+    <string name="login_exitoso">Login exitoso</string>
+    <string name="usuario_o_contrasena_incorrectos">Usuario o contraseña incorrectos</string>
+    <string name="contraseña_cambiada_exitosamente">Contraseña cambiada exitosamente</string>
+    <string name="contraseña_actual_incorrecta">Contraseña actual incorrecta</string>
+    <string name="usuario_no_encontrado">Usuario no encontrado</string>
+    <string name="cuenta_y_eventos_eliminados_exitosamente">Cuenta y eventos eliminados exitosamente</string>
+    <string name="error_al_eliminar_cuenta_o_eventos">Error al eliminar la cuenta o los eventos</string>
+    <string name="evento_creado_exitosamente">Evento creado exitosamente</string>
+    <string name="error_al_crear_evento">Error al crear el evento</string>
+    <string name="pista_de_recuperacion_incorrecta">Pista de recuperación incorrecta</string>
+    <string name="error_al_cambiar_contraseña">Error al cambiar la contraseña</string>
+    <string name="recuperar_contraseña">Recuperar Contraseña</string>
+    <string name="volver_a_login">Volver a Login</string>
+    <string name="cambiar_clave">Cambiar Clave</string>
+    <string name="crear_evento">Crear Evento</string>
+    <string name="eliminar_cuenta">Eliminar Cuenta</string>
+    <string name="titulo">Título</string>
+    <string name="fecha_evento">Fecha del Evento</string>
+    <string name="observacion">Observación</string>
+    <string name="lugar">Lugar</string>
+    <string name="crear_evento_button">Crear Evento</string>
+    <string name="mis_eventos">Mis Eventos</string>
+    <string name="registro">Registro</string>
+    <string name="login">Login</string>
+    <string name="olvidaste_tu_contraseña">Olvidaste tu contraseña?</string>
+    <string name="importancia">Importancia</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="pista_recuperacion">Pista Recuperacion</string>
+    <string name="registrar">Registrar</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="olvidaste_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="cambiar_contrasena">Cambiar Contraseña</string>
+    <string name="recuperar_contrasena">RECUPERAR CONTRASEÑA</string>
+    <string name="volver">Volver</string>
+    <string name="recuperar_clave">Recuperar Clave</string>
+    <string name="nueva_contrasena_1">Nueva Contraseña 1</string>
+    <string name="nueva_contrasena_2">Nueva Contraseña 2</string>
+    <string name="eliminar_cuenta_button">Eliminar Cuenta</string>
+    <string name="nombre">Nombre</string>
+    <string name="error_crear_evento">Error al crear el evento</string>
+    <string name="fecha">Fecha</string>
+    <string name="pista_recuperacion_incorrecta">Pista de recuperación incorrecta</string>
+    <string name="contrasena_cambiada_exitosamente">Contraseña cambiada exitosamente</string>
+    <string name="error_cambiar_contrasena">Error al cambiar la contraseña</string>
+    <string name="contrasena_no_coincide">La Contrasena no coincide</string>
+    <string name="cuenta_y_eventos_eliminados">Cuenta y eventos eliminados exitosamente</string>
+    <string name="error_eliminar_cuenta_eventos">Error al eliminar la cuenta o los eventos</string>
+    <string name="nuevas_contrasenas_no_coinciden">Las nuevas contraseñas no coinciden</string>
+
+
+    <string-array name="importancia_array">
+        <item>Baja</item>
+        <item>Media</item>
+        <item>Alta</item>
+    </string-array>
+
+</resources>

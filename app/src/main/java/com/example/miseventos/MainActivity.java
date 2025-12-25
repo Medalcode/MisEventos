@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.miseventos.utils.InputValidator;
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity {
 
     // Declaración de variables para los elementos de la interfaz de usuario
@@ -72,44 +75,122 @@ public class MainActivity extends AppCompatActivity {
 
     private void registrarUsuario() {
         // Obtención de los valores de los campos de texto
-        String nombre = etRegUser.getText().toString();
+        String nombre = etRegUser.getText().toString().trim();
         String password = etRegPass.getText().toString();
-        String pistaRecuperacion = etPistaRecu1.getText().toString();
+        String pistaRecuperacion = etPistaRecu1.getText().toString().trim();
 
-        // Verificación de que los campos no estén vacíos
-        if (nombre.isEmpty() || password.isEmpty() || pistaRecuperacion.isEmpty()) {
-            Toast.makeText(MainActivity.this, getString(R.string.todos_los_campos_obligatorios), Toast.LENGTH_SHORT).show();
+        // Validación del nombre de usuario
+        InputValidator.ValidationResult nombreResult = InputValidator.validateUsername(nombre);
+        if (!nombreResult.isSuccess()) {
+            showError(nombreResult.getErrorMessage());
+            etRegUser.requestFocus();
+            return;
+        }
+
+        // Validación de la contraseña
+        InputValidator.ValidationResult passResult = InputValidator.validatePassword(password);
+        if (!passResult.isSuccess()) {
+            showError(passResult.getErrorMessage());
+            etRegPass.requestFocus();
+            return;
+        }
+
+        // Validación de la pista de recuperación
+        InputValidator.ValidationResult pistaResult = InputValidator.validateNotEmpty(
+                pistaRecuperacion, "La pista de recuperación");
+        if (!pistaResult.isSuccess()) {
+            showError(pistaResult.getErrorMessage());
+            etPistaRecu1.requestFocus();
             return;
         }
 
         // Intento de registrar el usuario en la base de datos
+        // El hash de la contraseña se realiza automáticamente en BDActivity
         if (dbHelper.addUsuario(nombre, password, pistaRecuperacion)) {
-            Toast.makeText(MainActivity.this, getString(R.string.usuario_registrado_exitosamente), Toast.LENGTH_SHORT).show();
+            showSuccess(getString(R.string.usuario_registrado_exitosamente));
+            
+            // Limpiar campos de registro
+            etRegUser.setText("");
+            etRegPass.setText("");
+            etPistaRecu1.setText("");
+            
+            // Enfocar en login
+            etLogUser.setText(nombre);
+            etLogUser.requestFocus();
         } else {
-            Toast.makeText(MainActivity.this, getString(R.string.usuario_ya_registrado), Toast.LENGTH_SHORT).show();
+            showError(getString(R.string.usuario_ya_registrado));
         }
     }
 
     private void loginUsuario() {
         // Obtención de los valores de los campos de texto
-        String nombre = etLogUser.getText().toString();
+        String nombre = etLogUser.getText().toString().trim();
         String password = etLogPass.getText().toString();
 
-        // Verificación de que los campos no estén vacíos
-        if (nombre.isEmpty() || password.isEmpty()) {
-            Toast.makeText(MainActivity.this, getString(R.string.todos_los_campos_obligatorios), Toast.LENGTH_SHORT).show();
+        // Validación del nombre de usuario
+        InputValidator.ValidationResult nombreResult = InputValidator.validateUsername(nombre);
+        if (!nombreResult.isSuccess()) {
+            showError(nombreResult.getErrorMessage());
+            etLogUser.requestFocus();
+            return;
+        }
+
+        // Validación de la contraseña
+        InputValidator.ValidationResult passResult = InputValidator.validateNotEmpty(
+                password, "La contraseña");
+        if (!passResult.isSuccess()) {
+            showError(passResult.getErrorMessage());
+            etLogPass.requestFocus();
             return;
         }
 
         // Verificación de las credenciales del usuario en la base de datos
+        // La verificación del hash se realiza automáticamente en BDActivity
         if (dbHelper.checkUsuario(nombre, password)) {
-            Toast.makeText(MainActivity.this, getString(R.string.login_exitoso), Toast.LENGTH_SHORT).show();
+            showSuccess(getString(R.string.login_exitoso));
+            
+            // Obtener ID del usuario
+            int usuarioId = dbHelper.getUsuarioId(nombre);
+            
             // Inicio de la actividad ClaveActivity si el inicio de sesión es exitoso
             Intent intent = new Intent(MainActivity.this, ClaveActivity.class);
             intent.putExtra("usuario", nombre);
+            intent.putExtra("usuarioId", usuarioId);
             startActivity(intent);
+            
+            // Limpiar campos
+            etLogUser.setText("");
+            etLogPass.setText("");
         } else {
-            Toast.makeText(MainActivity.this, getString(R.string.usuario_o_contrasena_incorrectos), Toast.LENGTH_SHORT).show();
+            showError(getString(R.string.usuario_o_contrasena_incorrectos));
+            etLogPass.setText("");
+            etLogPass.requestFocus();
+        }
+    }
+
+    /**
+     * Muestra un mensaje de error usando Snackbar
+     */
+    private void showError(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(android.R.color.holo_red_dark))
+                .show();
+    }
+
+    /**
+     * Muestra un mensaje de éxito usando Snackbar
+     */
+    private void showSuccess(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
+                .setBackgroundTint(getResources().getColor(android.R.color.holo_green_dark))
+                .show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbHelper != null) {
+            dbHelper.close();
         }
     }
 }

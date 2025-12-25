@@ -16,6 +16,10 @@
             android:name=".EventosActivity"
             android:exported="false" />
         <activity
+            android:name=".EditarEventoActivity"
+            android:exported="false"
+            android:parentActivityName=".EventosActivity" />
+        <activity
             android:name=".RecuperarActivity"
             android:exported="false" />
         <activity

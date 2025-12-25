@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".EventosActivity">
+    android:layout_height="match_parent">
 
-    <!-- AppBar con Material Design 3 -->
+    <!-- AppBar -->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/mis_eventos"
+            app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
+            app:title="@string/editar_evento"
             app:titleTextColor="?attr/colorOnPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Contenido Principal -->
+    <!-- Contenido -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,28 +31,17 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Formulario de Crear Evento -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:text="@string/crear_evento"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                        android:textStyle="bold" />
 
                     <!-- Título -->
                     <com.google.android.material.textfield.TextInputLayout
@@ -119,7 +105,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textMultiLine"
-                            android:maxLines="3" />
+                            android:maxLines="5" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Importancia -->
@@ -138,77 +124,37 @@
                             android:inputType="none" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Botón Crear Evento -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnCrearEvento"
-                        style="@style/Widget.Material3.Button"
+                    <!-- Botones -->
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="@string/crear_evento_button"
-                        app:icon="@android:drawable/ic_input_add"
-                        app:iconGravity="textStart" />
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGuardar"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/guardar"
+                            app:icon="@android:drawable/ic_menu_save" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCancelar"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/cancelar" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Barra de Búsqueda y Filtros -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <!-- Búsqueda -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:hint="@string/buscar_eventos"
-                    app:startIconDrawable="@android:drawable/ic_menu_search">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etBuscar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:maxLines="1" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Botón Filtro -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnFiltro"
-                    style="@style/Widget.Material3.Button.IconButton.Filled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/filtrar_por_importancia"
-                    app:icon="@android:drawable/ic_menu_sort_by_size" />
-
-            </LinearLayout>
-
-            <!-- RecyclerView de Eventos -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvEventos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_evento" />
-
-            <!-- Mensaje cuando no hay eventos -->
-            <TextView
-                android:id="@+id/tvSinEventos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:gravity="center"
-                android:text="@string/sin_eventos"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                android:textColor="?android:attr/textColorSecondary"
-                android:visibility="gone" />
 
         </LinearLayout>
 

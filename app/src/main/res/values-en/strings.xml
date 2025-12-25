@@ -52,6 +52,19 @@
     <string name="cuenta_y_eventos_eliminados">Account and events deleted successfully</string>
     <string name="error_eliminar_cuenta_eventos">Error deleting account or events</string>
     <string name="nuevas_contrasenas_no_coinciden">New passwords do not match</string>
+    <string name="editar_evento">Edit event</string>
+    <string name="eliminar_evento">Delete event</string>
+    <string name="confirmar_eliminar">Are you sure you want to delete this event?</string>
+    <string name="cancelar">Cancel</string>
+    <string name="eliminar">Delete</string>
+    <string name="evento_eliminado">Event deleted successfully</string>
+    <string name="evento_actualizado">Event updated successfully</string>
+    <string name="buscar_eventos">Search events...</string>
+    <string name="sin_eventos">No events to display</string>
+    <string name="filtrar_por_importancia">Filter by importance</string>
+    <string name="todos">All</string>
+    <string name="actualizar">Update</string>
+    <string name="guardar">Save</string>
 
     <string-array name="importancia_array">
         <item>Low</item>

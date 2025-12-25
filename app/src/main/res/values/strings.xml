@@ -52,6 +52,19 @@
     <string name="cuenta_y_eventos_eliminados">Cuenta y eventos eliminados exitosamente</string>
     <string name="error_eliminar_cuenta_eventos">Error al eliminar la cuenta o los eventos</string>
     <string name="nuevas_contrasenas_no_coinciden">Las nuevas contraseñas no coinciden</string>
+    <string name="editar_evento">Editar evento</string>
+    <string name="eliminar_evento">Eliminar evento</string>
+    <string name="confirmar_eliminar">¿Está seguro que desea eliminar este evento?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="evento_eliminado">Evento eliminado exitosamente</string>
+    <string name="evento_actualizado">Evento actualizado exitosamente</string>
+    <string name="buscar_eventos">Buscar eventos...</string>
+    <string name="sin_eventos">No hay eventos para mostrar</string>
+    <string name="filtrar_por_importancia">Filtrar por importancia</string>
+    <string name="todos">Todos</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="guardar">Guardar</string>
 
 
     <string-array name="importancia_array">

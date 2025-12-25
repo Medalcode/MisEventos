@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardEvento"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Indicador de Importancia -->
+        <View
+            android:id="@+id/viewImportancia"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Título del Evento -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btnEditar"
+            app:layout_constraintStart_toEndOf="@+id/viewImportancia"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Reunión Importante" />
+
+        <!-- Fecha del Evento -->
+        <TextView
+            android:id="@+id/tvFecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            app:drawableStartCompat="@android:drawable/ic_menu_today"
+            app:drawableTint="?android:attr/textColorSecondary"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitulo"
+            app:layout_constraintStart_toStartOf="@+id/tvTitulo"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
+            tools:text="2025-12-25" />
+
+        <!-- Lugar del Evento -->
+        <TextView
+            android:id="@+id/tvLugar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            app:drawableStartCompat="@android:drawable/ic_dialog_map"
+            app:drawableTint="?android:attr/textColorSecondary"
+            app:layout_constraintEnd_toEndOf="@+id/tvFecha"
+            app:layout_constraintStart_toStartOf="@+id/tvFecha"
+            app:layout_constraintTop_toBottomOf="@+id/tvFecha"
+            tools:text="Oficina Central" />
+
+        <!-- Observación del Evento -->
+        <TextView
+            android:id="@+id/tvObservacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="?android:attr/textColorTertiary"
+            app:layout_constraintEnd_toEndOf="@+id/tvLugar"
+            app:layout_constraintStart_toStartOf="@+id/tvLugar"
+            app:layout_constraintTop_toBottomOf="@+id/tvLugar"
+            tools:text="Esta es una observación de ejemplo para el evento..." />
+
+        <!-- Chip de Importancia -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipImportancia"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:textSize="12sp"
+            app:chipBackgroundColor="?attr/colorSecondaryContainer"
+            app:layout_constraintStart_toStartOf="@+id/tvObservacion"
+            app:layout_constraintTop_toBottomOf="@+id/tvObservacion"
+            tools:text="Alta" />
+
+        <!-- Botón Editar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditar"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/editar_evento"
+            app:icon="@android:drawable/ic_menu_edit"
+            app:iconTint="?attr/colorPrimary"
+            app:layout_constraintEnd_toStartOf="@+id/btnEliminar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Botón Eliminar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEliminar"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/eliminar_evento"
+            app:icon="@android:drawable/ic_menu_delete"
+            app:iconTint="?attr/colorError"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
